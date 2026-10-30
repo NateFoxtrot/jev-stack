@@ -1,0 +1,12 @@
+[Unit]
+Description=JEV decision-protocol adapter — TIER-3 main model (glm/glm-5.3), port 8495
+After=network.target omniroute.service
+
+[Service]
+Environment=OMNI_MODEL=glm/glm-5.3
+ExecStart=/usr/bin/python3 %h/.agents/skills/jev/src/jev_adapter.py --port 8495
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=JEV decision-protocol adapter (glm-5.3-flash backend, port 8496)
+After=network.target omniroute.service
+
+[Service]
+ExecStart=/usr/bin/python3 %h/.agents/skills/jev/src/jev_adapter.py --port 8496
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
